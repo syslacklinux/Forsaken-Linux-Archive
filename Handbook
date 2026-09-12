@@ -1,0 +1,61 @@
+1 Download the ISO https://cdimage.debian.org/cdimage/archive/11.11.0/ select your architecture then iso-cd then download the debian 11.11 netinst iso
+2 Flash the iso from cd dvd or cd
+3 Setup Debian 11
+4 When on Software Selection Deselect Debian Desktop Environment leave it standard system utilities
+5 After Install run su - then apt install doas then nano /etc/doas.conf then permit persist username as root (Change username to your username)
+6 Run doas apt update && doas apt upgrade -y
+7 Run doas apt install links -y
+  then links https://github.com/syslacklinux/Forsaken-Linux/ then click enter on Screenshot From 2026-07-17 13-56-15 
+  Then after click enter change the name 623065669-de80debd-40f3-4822-8c91-d3403ed04c46 To forsaken-logo.png
+  Then run doas mv /home/username/forsaken-logo.png /usr/share/pixmaps (Change username to your username)
+  Then doas cp /usr/share/pixmaps/forsaken-logo.png /usr/share/pixmaps/debian-logo.png
+8 Run doas nano /etc/os-release then change
+  
+  PRETTY_NAME="Debian GNU/Linux 11 (bullseye)"
+  NAME="Debian GNU/Linux"
+  VERSION_ID="11"
+  VERSION="11 (bullseye)"
+  VERSION_CODENAME=bullseye
+  ID=debian
+  HOME_URL="https://www.debian.org/"
+  SUPPORT_URL="https://www.debian.org/support"
+  BUG_REPORT_URL="https://bugs.debian.org/"
+
+  To
+
+  PRETTY_NAME="Forsaken Linux 1 (eclipse)"
+  NAME="Forsaken Linux"
+  VERSION_ID="1"
+  VERSION="1 (eclipse)"
+  VERSION_CODENAME=eclipse
+  ID=forsaken
+  HOME_URL="https://github.com/syslacklinux/Forsaken-Linux"
+  SUPPORT_URL="https://github.com/syslacklinux/Forsaken-Linux/discussions/1"
+  BUG_REPORT_URL="https://github.com/syslacklinux/Forsaken-Linux/issues"
+  LOGO=/usr/share/pixmaps/forsaken-logo.png
+
+CTRL X Y ENTER and prevent from getting resetted by running doas apt-mark hold base-files
+
+9 Run doas nano /etc/issue
+  Then change Debian GNU/Linux 11 \n \l to Welcome to \s \r \m (\l)
+CTRL X Y ENTER
+
+10 Run doas rm /etc/issue.net
+11 Run doas nano /etc/default/grub
+   Then change GRUB_DISTRIBUTOR='lsb_release -i -s 2> /dev/null || echo Debian' to GRUB_DISTRIBUTOR="Forsaken Linux"
+   On GRUB_CMDLINE_LINUX_DEFAULT Remove quiet so it will be GRUB_CMDLINE_LINUX_DEFAULT=""
+CTRL X Y Enter then doas /usr/sbin/grub-mkconfig -o /boot/grub/grub.cfg
+12 run doas nano /etc/grub.d/10_linux then change OS=GNU/Linux to OS= on if [ "x${GRUB_DISTRIBUTOR}" = "x" ] ; then
+   CTRL X Y ENTER then doas /usr/sbin/grub-mkconfig -o /boot/grub/grub.cfg
+13 Run doas apt install bsdgames fortune
+14 Run doas nano ~/.bashrc
+   Then at very end add uname -r;fortune
+15 run doas rm /etc/motd
+16 Create a Forsaken origin file doas nano /etc/dpkg/origins/forsaken
+   Add
+
+   Vendor: Forsaken Linux
+   Vendor-URL: https://github.com/syslacklinux/Forsaken-Linux
+   Bugs: https://github.com/syslacklinux/Forsaken-Linux/issues
+
+CTRL X Y ENTER Then doas ln -sf /etc/dpkg/origins/forsaken /etc/dpkg/origins/default
