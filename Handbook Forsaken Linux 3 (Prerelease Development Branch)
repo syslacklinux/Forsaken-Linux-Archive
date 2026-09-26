@@ -1,0 +1,75 @@
+Important: Check Your Hardware Compatibility
+
+The Upgrading process from Forsaken Linux 2 to 3 (Prerelease Development Branch) is generally very easy and straight forward.
+
+- Forsaken Linux 3 has fully dropped support for x86 32-bit architechture, so pure 32-bit systems can not do this upgrade.
+
+- Armel Dropped on Forsaken Linux 3
+
+- And finally, MIPS architecture is gone completely.
+
+So If you are on any of these architecture, you will have to switch your hardware.
+
+1 Update and Clean Up
+  sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y && sudo apt clean
+
+2 Remove Obsolete Packages
+  apt list '?obsolete'
+
+3 But if it shows that obsolete packages are present in your system, then you have to remove them all before the actual system upgrade. To do that use this command
+  sudo apt purge '?obsolete'
+
+4 You have to Open the sources.list file with your preferred text editor, using the command
+  sudo nano /etc/apt/sources.list
+
+5 replace the word “bookworm” with “trixie”
+
+6 Next it will ask you to enter the word that you want “bookworm” to be replaced with, So you will have to enter “trixie” here and then press enter. Following with “a” to replace all at once. Then Ctrl+o to save and Ctrl+x to exit
+  And that’s it, the repo editing will be complete.
+
+7 System Update
+  sudo apt update
+
+8 Minimal Upgrade First
+  Next to minimize the risk of breaking the system during the early stages of a major version upgrade, Debian recommends to just Upgrade the system with the minimal base install, and to do that use this command
+  sudo apt upgrade --without-new-pkgs
+
+9 Full System Upgrade
+  After Minimal Upgrade is done, now you can execute the full upgrade with:
+  sudo apt full-upgrade
+
+10 After the full-upgrade is completed
+   Run sudo apt autoremove
+
+after this run sudo nano /etc/apt/sources.list
+
+Then Change
+
+
+PRETTY_NAME="Forsaken Linux 2 (stalemate)"
+NAME="Forsaken Linux"
+VERSION_ID="2"
+VERSION="2 (stalemate)"
+VERSION_CODENAME=stalemate
+ID=forsaken
+HOME_URL="https://github.com/syslacklinux/Forsaken-Linux"
+SUPPORT_URL="https://github.com/syslacklinux/Forsaken-Linux/discussions/1"
+BUG_REPORT_URL="https://github.com/syslacklinux/Forsaken-Linux/issues"
+LOGO=/usr/share/pixmaps/forsaken-logo.png
+
+To
+
+PRETTY_NAME="Forsaken Linux 3 (at the speed of light) (prerelease development branch)"
+NAME="Forsaken Linux"
+VERSION_ID="3"
+VERSION="3 (at the speed of light) (prerelease development branch)"
+VERSION_CODENAME=at the speed of light
+ID=forsaken
+HOME_URL="https://github.com/syslacklinux/Forsaken-Linux"
+SUPPORT_URL="https://github.com/syslacklinux/Forsaken-Linux/discussions/1"
+BUG_REPORT_URL="https://github.com/syslacklinux/Forsaken-Linux/issues"
+LOGO=/usr/share/pixmaps/forsaken-logo.png
+
+then reboot by run sudo reboot
+
+after this remove the leftover kernel 6.1 using sudo apt purge then sudo apt autoremove after sudo apt purge
