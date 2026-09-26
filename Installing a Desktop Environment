@@ -1,0 +1,20 @@
+You can install desktop environment on Forsaken Linux
+
+to install
+
+For gnome sudo apt install gnome gdm3
+For kde sudo apt install task-kde-desktop
+For XFCE Run sudo apt install xfce4 xfce4-goodies
+For Cinnamon Run sudo apt install task-cinnamon-desktop
+
+after install run sudo rm -rf /usr/share/desktop-base
+
+You can also install other desktop environment
+
+For GNOME you must check ls /usr/share/desktop-base
+if there is /usr/share/desktop-base run sudo rm -rf /usr/share/desktop-base then sudo apt-mark hold desktop-base
+
+Note if the wallpaper is just plain color for example gnome having a blue in debian without desktop base you can change with default wallpaper
+
+For KDE Plasma XFCE And Cinnamon and Other Desktop Environment you must check ls /usr/share/desktop-base 
+if there is /usr/share/desktop-base run sudo apt remove desktop-base && sudo apt purge desktop-base -y && sudo apt autoremove -y && sudo apt-mark hold desktop-base
