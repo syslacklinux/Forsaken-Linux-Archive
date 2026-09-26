@@ -1,0 +1,59 @@
+1 Download the iso https://www.debian.org/releases/bookworm/debian-installer/
+2 Flash the usb stick or cd
+3 Setup Debian 12
+4 When on Software Selection Deselect GNOME and debian desktop environment leaving it empty
+5 After install login as root first
+6 Run apt install links
+7 Run links https://github.com/syslacklinux/Forsaken-Linux then find Screenshot From 2026-07-1713-56-15 then save then change then name from 623065669-de80debd-40f3-4822-8c91-d3403ed04c46 to forsaken-logo.png then exit links
+8 run ls /root
+9 run mv /root/forsaken-logo.png /usr/share/pixmaps
+  Then run cp /usr/share/pixmaps/forsaken-logo.png /usr/share/pixmaps/debian-logo.png
+10 Run nano /etc/os-release
+   Change
+
+PRETTY_NAME="Debian GNU/Linux 12 (bookworm)"
+NAME="Debian GNU/Linux"
+VERSION_ID="12"
+VERSION="12 (bookworm)"
+VERSION_CODENAME=bookworm
+ID=debian
+HOME_URL="https://www.debian.org/"
+SUPPORT_URL="https://www.debian.org/support"
+BUG_REPORT_URL="https://bugs.debian.org/"
+
+TO
+
+PRETTY_NAME="Forsaken Linux 2 (stalemate)"
+NAME="Forsaken Linux"
+VERSION_ID="2"
+VERSION="2 (stalemate)"
+VERSION_CODENAME=stalemate
+ID=forsaken
+HOME_URL="https://github.com/syslacklinux/Forsaken-Linux"
+SUPPORT_URL="https://github.com/syslacklinux/Forsaken-Linux/discussions/1"
+BUG_REPORT_URL="https://github.com/syslacklinux/Forsaken-Linux/issues"
+LOGO=/usr/share/pixmaps/forsaken-logo.png
+
+CTRL X Y ENTER and prevent from getting resetted by running apt-mark hold base-files
+
+11 Run nano /etc/issue then change Debian GNU/Linux 12 \n \l to Welcome to \s \r \m (\l)
+12 Run rm /etc/issue.net
+13 Run nano /etc/default/grub
+   Then change GRUB_DISTRIBUTOR='lsb_release -i -s 2> /dev/null || echo Debian' to GRUB_DISTRIBUTOR="Forsaken"
+   On GRUB_CMDLINE_LINUX_DEFAULT Remove quiet so it will be GRUB_CMDLINE_LINUX_DEFAULT=""
+CTRL X Y Enter then update-grub
+
+14 Run apt install bsdgames fortune
+15 run rm /etc/motd
+16 Create a Forsaken origin file nano /etc/dpkg/origins/forsaken
+   Add 
+Vendor: Forsaken Linux
+Vendor-URL: https://github.com/syslacklinux/Forsaken-Linux
+Bugs: https://github.com/syslacklinux/Forsaken-Linux/issues
+
+CTRL X Y ENTER Then ln -sf /etc/dpkg/origins/forsaken /etc/dpkg/origins/default
+17 run apt install sudo then nano /etc/sudoers
+   then add your username on User privilege specification
+   then after root ALL=(ALL:ALL) ALL add username ALL=(ALL:ALL) ALL (Change username to your username)
+CTRL X Y Enter
+18 Run apt update then apt full-upgrade
