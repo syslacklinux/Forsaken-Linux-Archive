@@ -1,0 +1,59 @@
+Forsaken Linux 1
+Architecture=amd64,arm64,armel,armhf,i386,mips,mips64el,mipsel,ppc64el,s390x
+Codename=Eclipse
+Based On Debian 11 Bullseye
+New Features=First Version Of Forsaken Linux
+Kernel Version=5.10
+Status=Oldstable release
+Release Date=July 17 2026
+Released During=Same date when Forsaken Linux was Created
+Mainstream support end date=2026.08.21
+Extended support end date=2026.08.31
+
+Forsaken Linux 2
+Architecture=amd64,arm64,armel,armhf,i386,mips64el,mipsel,ppc64el,s390x,16-bit
+Codename=Stalemate
+Based On Debian 12 Bookworm
+New Features=Replaced Doas to Sudo,Shipped GNOME 43 and KDE Plasma 5.27,Shipped with Kernel 6.1,The architecture original mips removed leaving only mipsel and mips64el
+Kernel Version=6.1
+Status=Current Stable Release
+Release Date=September 13 2026
+Released During=Replaced The Codename From Indonesia to Stalemale
+Mainstream support end date=2027.03.30
+Extended support end date=2028.06.30
+
+Forsaken Linux 3
+Architecture=amd64,arm64,armhf,ppc64el,riscv64,s390x,16-bit
+Codename=At The Speed Of Light
+Based On Debian 13 Trixie
+New Features=TBA
+Kernel Version=6.12
+Status=Codename and Release Date announced
+Release Date=January 16 2027
+Released During=Unknown
+Mainstream support end date=TBA
+Extended support end date=TBA
+
+Forsaken Linux 4
+Architecture=TBD
+Codename=Back to the Future
+Based On Debian 14 Forky
+New Features=TBA
+Kernel Version=maybe from debian 14 actual kernel version
+Status=Codename announced
+Release Date=Unknown
+Released During=Unknown
+Mainstream support end date=TBA
+Extended support end date=TBA
+
+Forsaken Linux 5
+Architecture=TBD
+Codename=Unknown
+Based On Debian 15 Duke
+New Features=TBA
+Kernel Version=maybe from debian 15 actual kernel version
+Status=Future Release
+Release Date=Unknown
+Released During=Unknown
+Mainstream support end date=TBA
+Extended support end date=TBA
