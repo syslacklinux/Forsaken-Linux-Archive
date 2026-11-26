@@ -1,0 +1,97 @@
+1 Download the iso https://fastly.mirror.pkgbuild.com/iso/2026.09.01/ then Select archlinux-2026.09.01-x86_64.iso
+2 Flash the USB Or similar using Rufus Or Similar
+3 When on Archiso type archinstall
+  For Main Filesystem use ext4 its recommended for Forsaken Linux
+  For Bootloader Change Systemd-boot to GRUB
+  For Kernels Change linux to linux-lts
+  Network Configuration Network Manager default backend (or iwd backend if you need it)
+  For User and password It is required to create root password first then User account and password
+  Dont Select Profile because install minimal first!
+  After this Install then yes
+  Wait until installation completed
+4 After install login as root first then run pacman -Syu then pacman -S nano then nano /etc/pacman.conf then uncomment the # on multilib then ctrl x y enter then pacman -Syu
+5 Run pacman -S links then run links https://github.com/syslacklinux/Forsaken-Linux then save the Screenshot From 2026-09-26 20-58-37 Then save then change the name 659432023-e7572573-9fac-4254-8789-8767b3009b7d.png to forsaken-logo.png
+6 Run mv /root/forsaken-logo.png /usr/share/pixmaps
+  Run cp /usr/share/pixmaps/forsaken-logo.png /usr/share/pixmaps/archlinux-logo.png
+  Run cp /usr/share/pixmaps/forsaken-logo.png /usr/share/pixmaps/archlinux-logo.svg
+  Run cp /usr/share/pixmaps/forsaken-logo.png /usr/share/pixmaps/archlinux-logo-text.svg
+  Run cp /usr/share/pixmaps/forsaken-logo.png /usr/share/pixmaps/archlinux-logo-text-dark.svg
+7 Run rm /etc/os-release /etc/issue
+8 Create forsaken linux customized static files
+  Run sudo nano /etc/os-release
+  Add this
+
+NAME="Forsaken Linux"
+PRETTY_NAME="Forsaken Linux"
+ID=forsaken
+VERSION_ID="3"
+VERSION="3 (at the speed of light)"
+VERSION_CODENAME=at the speed of light
+BUILD_ID=20261011
+HOME_URL="https://github.com/syslacklinux/Forsaken-Linux"
+DOCUMENTATION_URL="https://github.com/syslacklinux/Forsaken-Linux/wiki"
+SUPPORT_URL="https://github.com/syslacklinux/Forsaken-Linux/discussions/1"
+BUG_REPORT_URL="https://github.com/syslacklinux/Forsaken-Linux/issues"
+LOGO=/usr/share/pixmaps/forsaken-logo.png
+
+CTRL X Y Enter After Adding this
+
+Run nano /etc/issue
+Then add this
+
+Welcome to \s \r \m (\l)
+
+When done CTRL X Y Enter 
+
+Mask the tmpfiles.d mechanism for /etc entries. Copy the default layout to /etc/tmpfiles.d/etc.conf so it overrides the system defaults
+
+cp /usr/lib/tmpfiles.d/etc.conf /etc/tmpfiles.d/etc.conf
+
+Run pacman -S lsb-release
+Run nano /etc/lsb-release
+
+Change
+
+DISTRIB_ID="Arch"
+DISTRIB_RELEASE="rolling"
+DISTRIB_DESCRIPTION="Arch Linux"
+
+To
+
+DISTRIB_ID="Forsaken Linux"
+DISTRIB_RELEASE="3 (at the speed of light)"
+DISTRIB_DESCRIPTION="Forsaken Linux"
+
+After Done run CTRL X Y Enter
+
+run nano /etc/pacman.conf
+
+Then add on NoExtract
+Remove The # Then add this NoExtract = etc/os-release etc/lsb-release etc/issue
+
+FOR LEGACY BIOS AND UEFI Run nano /etc/default/grub
+
+Change GRUB_DISTRIBUTOR="Arch" To GRUB_DISTRIBUTOR="Forsaken" change GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet" to GRUB_CMDLINE_LINUX_DEFAULT=""
+
+After This Run ctrl x y enter
+
+Then run grub-mkconfig -o /boot/grub/grub.cfg
+
+DONE FOR LEGACY BIOS GRUB CONFIGURING NOW REBOOT
+
+If you are on UEFI
+
+To Complete it
+
+run nano /usr/share/systemd/bootctl/arch.conf
+change
+title  Arch Linux
+To
+title  Forsaken Linux
+
+After this run ctrl x y enter
+Then cp /usr/share/pixmaps/forsaken-logo.png /usr/share/systemd/bootctl/splash-arch.bmp
+
+Recompile the UKI File mkinitcpio -P
+
+Reboot
